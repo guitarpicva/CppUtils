@@ -6,7 +6,7 @@
 // or to optionally drop the empty tokens.  Lots of choices in std::string
 
 // This version splits on a single char and keeps all empty tokens, so:
-// split on "a,b,c,,,f,g,h" with 'c' as the delimiter returns a vector 
+// split on "a,b,c,,,f,g,h" with ',' as the delimiter returns a vector 
 // with size of 8 with two empty strings in indexes 3 and 4.
 static void split(std::string str, std::vector<std::string> &token_v, const char delim){
     size_t start = str.find_first_not_of(delim), end=start;
