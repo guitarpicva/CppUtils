@@ -1,4 +1,4 @@
-# CppUtils
+# Ez Cpp Utils
 Some helper utilities that we get used to from frameworks like Qt
 
 When we have things like Qt's QString library, it's so darned convenient!
