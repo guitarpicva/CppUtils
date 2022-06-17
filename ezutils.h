@@ -2,8 +2,6 @@
 #include <vector>
 
 // We all need to split a string on a delimiter!
-// This could be extended to split on another std::string
-// or to optionally drop the empty tokens.  Lots of choices in std::string
 
 // This version splits on a single char and keeps all empty tokens, so:
 // split on "a,b,c,,,f,g,h" with ',' as the delimiter returns a vector 
@@ -40,7 +38,32 @@ static void split_discard(std::string str, std::vector<std::string> &token_v, co
 // This version splits on a single char and keeps/discards all empty tokens
 // based on bool passed. true = keep, false = discard
 // with size of 6 containing <a b c f g h>
+// Obviously, this could replace the two functions above if only dealing 
+// by adding the bool parameter: default = true (keep empty tokens)
 static void split(std::string str, std::vector<std::string> &token_v, const char delim, bool keep_empty_tokens = true){
+    size_t start = str.find_first_not_of(delim), end=start;
+    while (start != std::string::npos){
+        // Find next occurence of delimiter
+        end = str.find(delim, start);
+        // Push back the token found into vector
+        // back to back tokens leave an empty string in the vector
+        token_v.push_back(str.substr(start, end-start));
+        // choose to keep or discard
+        if(keep_empty_tokens) {
+            start = end + 1;
+        }
+        else {
+            // slide up to the next non-delimiter char (skips empty fields)
+           start = str.find_first_not_of(delim, end);
+        }
+    }
+}
+
+// This version splits on a string token (finds a matching sub-string) 
+// and keeps/discards all empty tokens based on bool passed. true = keep,
+// false = discard
+
+static void split(std::string str, std::vector<std::string> &token_v, const std::string delim, bool keep_empty_tokens = true){
     size_t start = str.find_first_not_of(delim), end=start;
     while (start != std::string::npos){
         // Find next occurence of delimiter
