@@ -52,7 +52,7 @@ static void split(std::string str, std::vector<std::string> &token_v, const char
         if(keep_empty_tokens) {
             start = end + 1;
         }
-        else {}
+        else {
             // slide up to the next non-delimiter char (skips empty fields)
            start = str.find_first_not_of(delim, end);
         }
