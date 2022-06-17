@@ -20,3 +20,19 @@ static void split_keep(std::string str, std::vector<std::string> &token_v, const
         start = end + 1;
     }
 }
+
+// This version splits on a single char and discards all empty tokens, so:
+// split on "a,b,c,,,f,g,h" with ',' as the delimiter returns a vector 
+// with size of 6 containing <a b c f g h>
+static void split_discard(std::string str, std::vector<std::string> &token_v, const char delim){
+    size_t start = str.find_first_not_of(delim), end=start;
+    while (start != std::string::npos){
+        // Find next occurence of delimiter
+        end = str.find(delim, start);
+        // Push back the token found into vector
+        // back to back tokens leave an empty string in the vector
+        token_v.push_back(str.substr(start, end-start));
+        // slide up to the next non-delimiter char (skips empty fields)
+        start = str.find_first_not_of(delim, end);
+    }
+}
