@@ -62,7 +62,6 @@ static void split(std::string str, std::vector<std::string> &token_v, const char
 // This version splits on a string token (finds a matching sub-string) 
 // and keeps/discards all empty tokens based on bool passed. true = keep,
 // false = discard
-
 static void split(std::string str, std::vector<std::string> &token_v, const std::string delim, bool keep_empty_tokens = true){
     size_t start = str.find_first_not_of(delim), end=start;
     while (start != std::string::npos){
