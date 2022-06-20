@@ -24,7 +24,7 @@ static void split_keep(std::string str, std::vector<std::string> &token_v, const
 // with size of 6 containing <a b c f g h>
 static void split_discard(std::string str, std::vector<std::string> &token_v, const char delim){
     size_t start = str.find_first_not_of(delim), end=start;
-    while (start != std::string::npos){
+    while (start != std::string::npos && end != std::string::npos){
         // Find next occurence of delimiter
         end = str.find(delim, start);
         // Push back the token found into vector
@@ -42,7 +42,7 @@ static void split_discard(std::string str, std::vector<std::string> &token_v, co
 // by adding the bool parameter: default = true (keep empty tokens)
 static void split(std::string str, std::vector<std::string> &token_v, const char delim, bool keep_empty_tokens = true){
     size_t start = str.find_first_not_of(delim), end=start;
-    while (start != std::string::npos){
+    while (start != std::string::npos && end != std::string::npos){
         // Find next occurence of delimiter
         end = str.find(delim, start);
         // Push back the token found into vector
@@ -64,7 +64,7 @@ static void split(std::string str, std::vector<std::string> &token_v, const char
 // false = discard
 static void split(std::string str, std::vector<std::string> &token_v, const std::string delim, bool keep_empty_tokens = true){
     size_t start = str.find_first_not_of(delim), end=start;
-    while (start != std::string::npos){
+    while (start != std::string::npos && end != std::string::npos){
         // Find next occurence of delimiter
         end = str.find(delim, start);
         // Push back the token found into vector
