@@ -80,3 +80,56 @@ static void split(std::string str, std::vector<std::string> &token_v, const std:
         }
     }
 }
+
+static uint16_t get_doy(const uint16_t year, const uint8_t mon, const uint8_t dom)
+{
+    uint8_t days_in_feb = 28, doy;    // day of year
+
+    doy = dom; // added to the result of the switch as the remaining days to count
+
+    // check for leap year
+    if( (year % 4 == 0 && year % 100 != 0 ) || (year % 400 == 0) )
+    {
+        days_in_feb = 29;
+    }
+
+    switch(mon)
+    { 
+        // we don't have to check Jan since it will naturally be 1-31 as the DOY
+        case 2:
+            doy += 31;
+            break;
+        case 3:
+            doy += 31+days_in_feb;
+            break;
+        case 4:
+            doy += 31+days_in_feb+31;
+            break;
+        case 5:
+            doy += 31+days_in_feb+31+30;
+            break;
+        case 6:
+            doy += 31+days_in_feb+31+30+31;
+            break;
+        case 7:
+            doy += 31+days_in_feb+31+30+31+30;
+            break;            
+        case 8:
+            doy += 31+days_in_feb+31+30+31+30+31;
+            break;
+        case 9:
+            doy += 31+days_in_feb+31+30+31+30+31+31;
+            break;
+        case 10:
+            doy += 31+days_in_feb+31+30+31+30+31+31+30;            
+            break;            
+        case 11:
+            doy += 31+days_in_feb+31+30+31+30+31+31+30+31;            
+            break;                        
+        case 12:
+            doy += 31+days_in_feb+31+30+31+30+31+31+30+31+30;            
+            break;                                    
+    }
+
+    return doy; // return 0 to operating system
+}
