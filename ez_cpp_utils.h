@@ -81,8 +81,8 @@ static void split(std::string str, std::vector<std::string> &token_v, const std:
     }
 }
 
-// find the day of the year based on the system clock items year, month and day 
-/  accounts for leap years.
+// Find the day of the year based on the system clock items year, month and day.
+// Also accounts for leap years.
 static uint16_t get_doy(const uint16_t year, const uint8_t mon, const uint8_t dom)
 {
     uint8_t days_in_feb = 28, doy;    // day of year
