@@ -46,9 +46,10 @@ int main()
     cout << "===========================================================" << endl;
     cout << "EzCppUtils Test Frame" << endl;
     cout << "---------------------" << endl;
-    cout << "Day of Year for 2023-1-31:" << get_doy(2023u, 1u, 31u) << "\n";
-    cout << "Day of Year for 2023-2-28:" << get_doy(2023u, 2u, 28u) << "\n";
+    cout << "Day of Year for 2023-01-31:" << get_doy(2023u, 1u, 31u) << "\n";
+    cout << "Day of Year for 2023-02-28:" << get_doy(2023u, 2u, 28u) << "\n";
     cout << "Day of Year for 2023-12-31:" << get_doy(2023u, 12u, 31u) << "\n";
-    cout << "Day of Year for 2000-2-29:" << get_doy(2000u, 2u, 29u) << "\n\n";
+    cout << "Day of Year for 2000-02-29:" << get_doy(2000u, 2u, 29u) << "\n\n";
+    cout << "Day of Year for 2000-03-01:" << get_doy(2000u, 3u, 1u) << "\n\n";
     return 0;
 }

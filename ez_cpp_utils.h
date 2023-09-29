@@ -106,6 +106,7 @@ static uint32_t get_doy(const uint32_t year, const uint32_t mon, const uint32_t 
     // check for leap year
     if( (year % 4 == 0 && year % 100 != 0 ) || (year % 400 == 0) )
     {
+        std::cout << "leap year!" << std::endl;
         days_in_feb = 29;
     }
 
