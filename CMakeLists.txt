@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(EzCppUtils main.cpp
     ez_cpp_utils.h
     maidenhead.h
+    README.md
 )
 
 include(GNUInstallDirs)
