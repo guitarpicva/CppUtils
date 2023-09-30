@@ -62,5 +62,11 @@ int main()
     cout << "Latitude/Longitude for MH FM16DX:"<<latlon.first<<"/"<<latlon.second<<endl;
     latlon = mh2ll("fm16DX");
     cout << "Latitude/Longitude for MH fm16DX:"<<latlon.first<<"/"<<latlon.second<<endl;
+    latlon = mh2ll("fm16D");
+    cout << "Latitude/Longitude for MH fm16D:"<<latlon.first<<"/"<<latlon.second<<endl;
+    latlon = mh2ll("fm16DXxx");
+    cout << "Latitude/Longitude for MH fm16DXxx:"<<latlon.first<<"/"<<latlon.second<<endl;
+    latlon = mh2ll("fm1");
+    cout << "Latitude/Longitude for MH fm1:"<<latlon.first<<"/"<<latlon.second<<endl;
     return 0;
 }

@@ -13,6 +13,9 @@ static std::pair<double, double> mh2ll(const std::string mh)
     for(char c: mh) {
         ba2.push_back((uint8_t)c);
     }
+    if(ba2.size()<4) {return std::pair<double, double>(0.0,0.0);}
+    if(ba2.size() > 6) { ba2.resize(6);}
+    if(ba2.size() > 4 && ba2.size() < 6) {ba2.resize(4);}
 //    if(ba2.size() == 4) cout<<"ba2 init:"<<ba2.at(0)<<ba2.at(1)<<ba2.at(2)<<ba2.at(3)<<endl;
 //    else if(ba2.size() == 6) cout<<"ba2 init:"<<ba2.at(0)<<ba2.at(1)<<ba2.at(2)<<ba2.at(3)<<ba2.at(4)<<ba2.at(5)<<endl;
     // latitude calcs  sample: FM16dw
