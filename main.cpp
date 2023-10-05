@@ -1,4 +1,7 @@
 #include <iostream>
+#include <stdlib.h>
+#include <iomanip>
+//#include <sstream>
 #include "ez_cpp_utils.h"
 #include "maidenhead.h"
 using namespace std;
@@ -68,5 +71,26 @@ int main()
     cout << "Latitude/Longitude for MH fm16DXxx:"<<latlon.first<<"/"<<latlon.second<<endl;
     latlon = mh2ll("fm1");
     cout << "Latitude/Longitude for MH fm1:"<<latlon.first<<"/"<<latlon.second<<endl;
+    cout << "===========================================================" << endl;
+    std::pair<double, double> maid = mh2ll("FM16dx");
+    cout <<"Lat/Lon for Maidenhead FM16dx: "<< maid.first <<"/" << maid.second<<endl;
+    std::pair<double, double> aprs = ll2aprs(maid);
+    std::string out;
+    double adj;
+    if(aprs.second < 0) {
+        adj = abs(aprs.second);
+        cout<<"adj:"<<adj<<endl;
+        out = std::to_string(adj);
+        cout<<"out:"<<out<<endl;
+        if(adj < 10000.0) {
+            out.insert(0, "0");
+            out = out.substr(0, 8);
+        }
+        cout<<"newout:"<<out<<endl;
+    }
+    cout <<"APRS format: "<<aprs.first<<(aprs.first> 0?"N/":"S/")<< \
+         out<<(aprs.second>0?"E":"W")<<endl;
+    cout << "===========================================================" << endl;
+    cout<<"formatted with aprs_pos():"<<aprs_pos(aprs)<<endl;
     return 0;
 }
