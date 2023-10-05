@@ -6,7 +6,6 @@ using namespace  std;
 
 static std::pair<double, double> mh2ll(const std::string mh)
 {
-    bool ok;
     double lon = 0.0;
     double lat = 0.0;
     std::vector<u_int8_t> ba2;
@@ -24,7 +23,7 @@ static std::pair<double, double> mh2ll(const std::string mh)
     //cout<<"cc2 init: "<<cc2<<endl;
     cc2 -= 65; // hex of capitol letter of alphabet - 'A' = deg above South pole * 1/10
     cc2 *= 10; // = degrees above zero at South Pole
-    // example: M = 120 deg. North of the South pole
+    // example: 'M' = 120 deg. North of the South pole
     //cout<<"cc2:"<<cc2<<endl;
     int cc4 = atoi((char *)&ba2.at(3));
     //cout<<"cc4:"<<cc4<<" ba2.size():"<<ba2.size()<<endl;
@@ -80,4 +79,20 @@ static std::pair<double, double> mh2ll(const std::string mh)
     //cout<<cc1<<cc3;
     //cout<<"lon:"<<lon<<endl;
     return std::pair<double, double>(lat, lon);
+}
+
+static std::pair<double, double> ll2aprs(const std::pair<double, double> latlon)
+{
+    double latdeg = (int32_t) latlon.first * 100; // move deg 2 digits left
+    double latmin = latlon.first - ((int32_t) latlon.first); // only the fractional part
+    //cout<<latdeg<<" "<<latmin<<endl;
+    latmin *= 60.0; // move the min 2 dig to the left to add to the deg for APRS
+    //cout<<latdeg<<" "<<latmin<<endl;
+
+    double londeg = (int32_t) latlon.second * 100;
+    double lonmin = latlon.second - ((int32_t) latlon.second);
+    //cout<<londeg<<lonmin<<endl;
+    lonmin *= 60;
+    //cout<<londeg<<lonmin<<endl;
+    return std::pair<double, double>(latdeg+latmin, londeg+lonmin);
 }
