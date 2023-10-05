@@ -92,5 +92,7 @@ int main()
          out<<(aprs.second>0?"E":"W")<<endl;
     cout << "===========================================================" << endl;
     cout<<"formatted with aprs_pos():"<<aprs_pos(aprs)<<endl;
+    cout << "===========================================================" << endl;
+    cout <<"formatted with mh2aprs():"<<mh2aprs("FM16dx")<<endl;
     return 0;
 }
