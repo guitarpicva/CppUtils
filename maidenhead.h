@@ -8,9 +8,9 @@ static std::pair<double, double> mh2ll(const std::string mh)
 {
     double lon = 0.0;
     double lat = 0.0;
-    std::vector<uint8_t> ba2;
+    std::vector<unsigned char> ba2;
     for(char c: mh) {
-        ba2.push_back((uint8_t)c);
+        ba2.push_back((unsigned char)c);
     }
     if(ba2.size()<4) {return std::pair<double, double>(0.0,0.0);}
     if(ba2.size() > 6) { ba2.resize(6);}
@@ -83,14 +83,14 @@ static std::pair<double, double> mh2ll(const std::string mh)
 
 static std::pair<double, double> ll2aprs(const std::pair<double, double> latlon)
 {
-    double latdeg = (int32_t) latlon.first * 100; // move deg 2 digits left
-    double latmin = latlon.first - ((int32_t) latlon.first); // only the fractional part
+    double latdeg = (int) latlon.first * 100; // move deg 2 digits left
+    double latmin = latlon.first - ((int) latlon.first); // only the fractional part
     //cout<<latdeg<<" "<<latmin<<endl;
     latmin *= 60.0; // move the min 2 dig to the left to add to the deg for APRS
     //cout<<latdeg<<" "<<latmin<<endl;
 
-    double londeg = (int32_t) latlon.second * 100;
-    double lonmin = latlon.second - ((int32_t) latlon.second);
+    double londeg = (int) latlon.second * 100;
+    double lonmin = latlon.second - ((int) latlon.second);
     //cout<<londeg<<lonmin<<endl;
     lonmin *= 60;
     //cout<<londeg<<lonmin<<endl;
