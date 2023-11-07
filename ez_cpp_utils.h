@@ -94,12 +94,12 @@ static std::vector<std::string> split(std::string str, const std::string delim, 
 
 // Find the day of the year based on the parameters year, month and day.
 // Also accounts for leap years.
-static uint32_t get_doy(const uint32_t year, const uint32_t mon, const uint32_t dom)
+static unsigned int get_doy(const unsigned int year, const unsigned int mon, const unsigned int dom)
 {
 //    std::cout << "year "<<year<<std::endl;
 //    std::cout<<"month "<<mon<<std::endl;
 //    std::cout<<"day "<<dom<<std::endl;
-    uint32_t days_in_feb = 28, doy;    // day of year
+    unsigned int days_in_feb = 28, doy;    // day of year
 
     doy = dom; // start with the day of the current month
 
